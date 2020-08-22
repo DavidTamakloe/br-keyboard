@@ -12,6 +12,9 @@
     .white-key:active {
         background: red;
     }
+    .white-key.highlighted {
+        background: red;
+    }
     .black-key-left {
         height: 160px;
         background: black;

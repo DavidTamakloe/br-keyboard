@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, wait } from "@testing-library/react";
 import App from "./App";
 
 describe("App", () => {
@@ -19,5 +19,33 @@ describe("App", () => {
         fireEvent.click(screen.getByText("E"));
         fireEvent.click(screen.getByText("D"));
         expect(screen.getByText("CED")).toBeInTheDocument();
+    });
+    test("play functionality", async () => {
+        render(<App />);
+        fireEvent.change(screen.getByRole("textbox"), {
+            target: {
+                value: "C,A,B",
+            },
+        });
+        fireEvent.click(screen.getByText("Play"));
+
+        await wait(
+            () => {
+                expect(screen.getByText("C")).toHaveClass("highlighted");
+            },
+            { timeout: 4000 }
+        );
+        await wait(
+            () => {
+                expect(screen.getByText("A")).toHaveClass("highlighted");
+            },
+            { timeout: 4000 }
+        );
+        await wait(
+            () => {
+                expect(screen.getByText("B")).toHaveClass("highlighted");
+            },
+            { timeout: 4000 }
+        );
     });
 });

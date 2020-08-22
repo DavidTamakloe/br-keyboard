@@ -2,10 +2,10 @@ import "./index.scss";
 import React from "react";
 import PropTypes from "prop-types";
 
-const WhiteKey = ({ blackKeyLeft = false, blackKeyRight = false, letter, onKeyClicked }) => {
+const WhiteKey = ({ blackKeyLeft = false, blackKeyRight = false, letter, onKeyClicked, highlightLetter }) => {
     return (
         <div
-            className="white-key"
+            className={`white-key ${highlightLetter === letter && "highlighted"}`}
             onClick={() => {
                 onKeyClicked(letter);
             }}
@@ -17,16 +17,16 @@ const WhiteKey = ({ blackKeyLeft = false, blackKeyRight = false, letter, onKeyCl
     );
 };
 
-const KeyboardComponent = ({ onKeyClicked }) => {
+const KeyboardComponent = ({ highlightLetter, onKeyClicked }) => {
     return (
         <div className="keyboard-div">
-            <WhiteKey letter="C" blackKeyRight onKeyClicked={onKeyClicked} />
-            <WhiteKey letter="D" blackKeyLeft blackKeyRight onKeyClicked={onKeyClicked} />
-            <WhiteKey letter="E" blackKeyLeft onKeyClicked={onKeyClicked} />
-            <WhiteKey letter="F" blackKeyRight onKeyClicked={onKeyClicked} />
-            <WhiteKey letter="G" blackKeyLeft blackKeyRight onKeyClicked={onKeyClicked} />
-            <WhiteKey letter="A" blackKeyLeft blackKeyRight onKeyClicked={onKeyClicked} />
-            <WhiteKey letter="B" blackKeyLeft onKeyClicked={onKeyClicked} />
+            <WhiteKey letter="C" blackKeyRight onKeyClicked={onKeyClicked} highlightLetter={highlightLetter} />
+            <WhiteKey letter="D" blackKeyLeft blackKeyRight onKeyClicked={onKeyClicked} highlightLetter={highlightLetter} />
+            <WhiteKey letter="E" blackKeyLeft onKeyClicked={onKeyClicked} highlightLetter={highlightLetter} />
+            <WhiteKey letter="F" blackKeyRight onKeyClicked={onKeyClicked} highlightLetter={highlightLetter} />
+            <WhiteKey letter="G" blackKeyLeft blackKeyRight onKeyClicked={onKeyClicked} highlightLetter={highlightLetter} />
+            <WhiteKey letter="A" blackKeyLeft blackKeyRight onKeyClicked={onKeyClicked} highlightLetter={highlightLetter} />
+            <WhiteKey letter="B" blackKeyLeft onKeyClicked={onKeyClicked} highlightLetter={highlightLetter} />
         </div>
     );
 };
