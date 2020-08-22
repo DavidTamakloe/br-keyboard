@@ -31,19 +31,19 @@ describe("App", () => {
 
         await wait(
             () => {
-                expect(screen.getByText("C")).toHaveClass("highlighted");
+                expect(screen.getByText("C").parentElement).toHaveClass("highlighted");
             },
             { timeout: 4000 }
         );
         await wait(
             () => {
-                expect(screen.getByText("A")).toHaveClass("highlighted");
+                expect(screen.getByText("A").parentElement).toHaveClass("highlighted");
             },
             { timeout: 4000 }
         );
         await wait(
             () => {
-                expect(screen.getByText("B")).toHaveClass("highlighted");
+                expect(screen.getByText("B").parentElement).toHaveClass("highlighted");
             },
             { timeout: 4000 }
         );

@@ -1,4 +1,37 @@
 .App {
     padding-top: 50px;
     text-align: center;
+
+    .keylog-text {
+        padding: 10px 20px;
+        background: white;
+        border-radius: 10px;
+        margin: 20px 50px;
+    }
+
+    .error-message-div {
+        display: inline-block;
+        padding: 10px;
+        border: 1px solid red;
+        border-radius: 5px;
+        background: lightpink;
+        color: red;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .play-input {
+        padding: 10px 15px;
+        border-radius: 5px;
+        border-color: #ccc;
+    }
+
+    .play-btn {
+        padding: 10px 15px;
+        border-radius: 5px;
+        border-color: skyblue;
+        background: skyblue;
+        color: white;
+        font-weight: bold;
+    }
 }

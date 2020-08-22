@@ -13,9 +13,9 @@ function App() {
     };
 
     const onPlayClicked = () => {
-        if (validateInputString(keysToPlay)) {
+        if (validateInputString(keysToPlay.toUpperCase())) {
             setShowErrorMessage(false);
-            const keyArray = keysToPlay.split(",");
+            const keyArray = keysToPlay.toUpperCase().split(",");
             setHighlightLetter(keyArray[0]); // highlight first letter before interval since setInterval will wait 1sec before starting.
             let count = 1;
             let intervalId = setInterval(() => {
@@ -31,28 +31,37 @@ function App() {
     };
 
     const validateInputString = (str) => {
-        const regex = /([CDEFGAB]{1}\,{1})+[CDEFGAB]{1}$/;
+        const regex = /([CDEFGAB]{1},{1})+[CDEFGAB]{1}$/;
         return regex.test(str);
     };
 
     return (
         <div className="App">
+            <h3>B/R Keyboard</h3>
             <Keyboard onKeyClicked={onKeyClicked} highlightLetter={hightlightLetter} />
-            <br />
-            <p>{keyLog}</p>
-            <br />
-            {showErrorMessage && (
-                <div className="error-message-div">
-                    <p>Please enter a valid string of keys to play. Keys should be separated by a comma.</p>
-                </div>
-            )}
+
+            <p className="keylog-text">{keyLog.length > 0 ? keyLog : "Play Something"}</p>
+
             <input
+                className="play-input"
+                placeholder="Enter sequence to play"
                 value={keysToPlay}
                 onChange={(e) => {
                     setKeysToPlay(e.target.value);
                 }}
             />
-            <button onClick={onPlayClicked}>Play</button>
+            <button className="play-btn" onClick={onPlayClicked}>
+                Play
+            </button>
+            <br />
+            {showErrorMessage && (
+                <div className="error-message-div">
+                    <p>
+                        Please enter a valid string of keys to play.
+                        <br /> Keys should be separated by a comma.
+                    </p>
+                </div>
+            )}
         </div>
     );
 }

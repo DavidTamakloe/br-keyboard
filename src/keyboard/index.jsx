@@ -12,7 +12,7 @@ const WhiteKey = ({ blackKeyLeft = false, blackKeyRight = false, letter, onKeyCl
         >
             {blackKeyRight && <span className="black-key-right"></span>}
             {blackKeyLeft && <span className="black-key-left"></span>}
-            {letter}
+            <p className="letter">{letter}</p>
         </div>
     );
 };
