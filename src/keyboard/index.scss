@@ -1,0 +1,31 @@
+.keyboard-div {
+    display: inline-flex;
+
+    .white-key {
+        width: 80px;
+        height: 300px;
+        border: 2px solid black;
+        background: white;
+        text-align: center;
+        position: relative;
+    }
+    .white-key:active {
+        background: red;
+    }
+    .black-key-left {
+        height: 160px;
+        background: black;
+        width: 30px;
+        float: left;
+        border: 2px solid black;
+        box-sizing: border-box;
+    }
+    .black-key-right {
+        height: 160px;
+        background: black;
+        width: 30px;
+        float: right;
+        border: 2px solid black;
+        box-sizing: border-box;
+    }
+}
