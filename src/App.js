@@ -7,6 +7,7 @@ function App() {
     const [hightlightLetter, setHighlightLetter] = useState();
     const [keysToPlay, setKeysToPlay] = useState("");
     const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [numberOfKeyboards, setNumberOfKeyboards] = useState(1);
 
     const onKeyClicked = (letter) => {
         setKeyLog([...keyLog, letter]);
@@ -35,10 +36,29 @@ function App() {
         return regex.test(str);
     };
 
+    const addKeyboard = () => {
+        setNumberOfKeyboards(numberOfKeyboards + 1);
+    };
+    const removeKeyboard = () => {
+        setNumberOfKeyboards(numberOfKeyboards - 1);
+    };
+
+    let keyboards = [];
+    for (let i = 0; i < numberOfKeyboards; i++) {
+        keyboards.push(<Keyboard key={i} onKeyClicked={onKeyClicked} highlightLetter={hightlightLetter} />);
+    }
+
     return (
         <div className="App">
             <h3>B/R Keyboard</h3>
-            <Keyboard onKeyClicked={onKeyClicked} highlightLetter={hightlightLetter} />
+
+            <div className="keyboard-counter">
+                <button onClick={removeKeyboard}>-</button>
+                &nbsp;<span>{numberOfKeyboards}</span>&nbsp;
+                <button onClick={addKeyboard}>+</button>
+            </div>
+
+            {keyboards}
 
             <p className="keylog-text">{keyLog.length > 0 ? keyLog : "Play Something"}</p>
 

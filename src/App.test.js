@@ -58,4 +58,11 @@ describe("App", () => {
         fireEvent.click(screen.getByText("Play"));
         expect(screen.getByText("Please enter a valid string of keys to play. Keys should be separated by a comma.")).toBeInTheDocument();
     });
+    test("adding and removing keyboards", () => {
+        render(<App />);
+        fireEvent.click(screen.getByText("+"));
+        expect(screen.getAllByText("C")).toHaveLength(2);
+        fireEvent.click(screen.getByText("-"));
+        expect(screen.getAllByText("C")).toHaveLength(1);
+    });
 });

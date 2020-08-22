@@ -10,6 +10,10 @@
         position: relative;
         border-radius: 0 0 8px 8px;
     }
+    .white-key:hover {
+        cursor: pointer;
+        background: #f1f1f1;
+    }
     .white-key:active {
         background: skyblue;
     }
