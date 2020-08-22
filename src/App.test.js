@@ -48,4 +48,14 @@ describe("App", () => {
             { timeout: 4000 }
         );
     });
+    test("invalid input shows error message", () => {
+        render(<App />);
+        fireEvent.change(screen.getByRole("textbox"), {
+            target: {
+                value: "invalid",
+            },
+        });
+        fireEvent.click(screen.getByText("Play"));
+        expect(screen.getByText("Please enter a valid string of keys to play. Keys should be separated by a comma.")).toBeInTheDocument();
+    });
 });
